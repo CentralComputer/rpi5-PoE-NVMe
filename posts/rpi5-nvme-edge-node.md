@@ -1,5 +1,7 @@
 # Build a Bulletproof Edge Node with Raspberry Pi 5, Native NVMe, and Zero-Trust Remote Access
 
+*By Richard Rives*
+
 *A practical guide to deploying a PoE+-powered, remotely manageable Pi 5 that boots from NVMe over native PCIe and connects securely through Tailscale and Teleport.*
 
 ---
