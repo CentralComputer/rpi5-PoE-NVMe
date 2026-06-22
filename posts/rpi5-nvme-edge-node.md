@@ -10,7 +10,7 @@
 
 The Raspberry Pi 5 is the first Pi with a native PCIe interface — and that changes everything for edge deployments. No more USB-to-NVMe adapters. No more SD card reliability headaches. Just a direct PCIe Gen 2 connection to a fast NVMe drive, real NVMe speeds (~900 MB/s read), and a platform powerful enough to run serious workloads at the edge.
 
-Pair that with a combined PoE+ and NVMe HAT, Tailscale, Teleport, and Atera RMM, and you get a single-cable edge node — one Ethernet wire for both power and network — that any authorized technician can reach from anywhere, with full session auditing and remote monitoring built in.
+Pair that with a combined PoE+ and NVMe HAT (Geekworm X1012), Tailscale, Teleport, and Atera RMM, and you get a single-cable edge node — one Ethernet wire for both power and network — that any authorized technician can reach from anywhere, with full session auditing and remote monitoring built in.
 
 This build is designed to be replicated identically across multiple locations. Same parts, same steps, same result every time.
 
@@ -24,7 +24,7 @@ The Pi 5 is the right choice here for three reasons:
 
 **More power, more headroom.** The Pi 5's quad-core Cortex-A76 CPU is roughly 2–3x faster than the Pi 4's A72. For edge compute, monitoring, and AI inference workloads, that margin matters.
 
-**Cleaner build.** One combined HAT handles PoE+ power delivery and NVMe storage. Fewer parts, fewer failure points, one FPC cable instead of a USB enclosure dangling off a port.
+**Cleaner build.** One combined HAT (Geekworm X1012) handles PoE+ power delivery and NVMe storage. Fewer parts, fewer failure points, one FPC cable instead of a USB enclosure dangling off a port.
 
 ---
 
@@ -32,17 +32,17 @@ The Pi 5 is the right choice here for three reasons:
 
 | Component | Details |
 |---|---|
-| Raspberry Pi 5 — 8 GB RAM | Main compute unit; native PCIe Gen 2 via FPC connector |
-| Pineboards HatDrive! PoE+ for Pi 5 | Combined PoE+ (25W, 802.3at) + M.2 NVMe HAT; ~$46 |
-| Pi 5 Compatible Case with HAT Clearance | Must accommodate Pi 5 + top-mounted HAT (TBD per deployment) |
-| SanDisk 128 GB microSD (SDSQXH9-128G) | Bootstrap and recovery medium |
-| M.2 NVMe SSD — 512 GB to 4 TB | 2230, 2242, or 2280 form factor; e.g., WD Blue SN580, Samsung 980 |
+| Raspberry Pi 5 — 8 GB RAM | Main compute unit; native PCIe Gen 2 via FPC connector. [centralcomputer.com](https://www.centralcomputer.com/raspberry-pi-5-8gb-ram-board.html) — $174.99 |
+| Geekworm X1012 PoE+ HAT and NVMe SSD Shield | Combined PoE+ (802.3at, 25W, 5V/5A) + M.2 NVMe HAT; ~$39.95. [centralcomputer.com](https://www.centralcomputer.com/geekworm-x1012-pcie-to-nvme-poe-shield-for-raspberry-pi-5.html) |
+| Geekworm P579 Metal Case for Raspberry Pi 5 | PCIe HAT-compatible enclosure, confirmed fit with X1012. [centralcomputer.com](https://www.centralcomputer.com/geekworm-p579-raspberry-pi-5-pcie-metal-case-black.html) — $12.95 |
+| SanDisk High Endurance 128 GB microSDXC (SDSQQNR-128G) | Bootstrap and recovery medium; High Endurance rated for continuous writes. [centralcomputer.com](https://www.centralcomputer.com/sandisk-sdsqqnr-128g-an6ia-128gb-high-enduranceuhs-i-microsdxc-memory-card-with-sd-adapter.html) — $39.99 |
+| Western Digital SN770M 500 GB NVMe M.2 2230 SSD | PCIe Gen4 x4, 5150 MB/s read; primary OS and data drive. [centralcomputer.com](https://www.centralcomputer.com/western-digital-sn770m-500gb-nvme-m-2-2230ssd-m-2-2230-pcie-gen4-x4-5150mb-s-reads-4900mb-s-writes.html) — $129.99 |
 | HDMI-to-CSI-2 Adapter | Captures HDMI video input via camera ribbon slot (optional) |
-| Cat6 Ethernet Cable | Single cable delivers both network and PoE+ power |
+| Cat6 Ethernet Cable | Single cable delivers both network and PoE+ power. [centralcomputer.com](https://www.centralcomputer.com/all-products/cables/networking-cables/ethernet-cables/cat6.html) — length per deployment |
 
-> **One HAT, two jobs.** The Pineboards HatDrive! PoE+ replaces two components from a Pi 4 build: the separate PoE HAT and the USB NVMe enclosure. It connects to the Pi 5's PCIe FPC port via the included 25mm flat cable and to the GPIO header for power management. The result is a cleaner, more reliable build with true NVMe performance.
+> **One HAT, two jobs.** The Geekworm X1012 replaces two components from a Pi 4 build: the separate PoE HAT and the USB NVMe enclosure. It connects to the Pi 5's PCIe FPC port via the included 25mm flat cable and to the GPIO header for power management. The result is a cleaner, more reliable build with true NVMe performance.
 
-> **Case note:** Select a Pi 5-compatible case that accommodates a top-mounted HAT. The Pi 4 HighPi case does not fit the Pi 5 form factor. Options include open-frame rack mounts, the Argon NEO 5, or similar Pi 5 HAT-ready enclosures.
+> **Case note:** The Geekworm P579 Metal Case is confirmed compatible with the X1012 HAT. It is available at [centralcomputer.com](https://www.centralcomputer.com/geekworm-p579-raspberry-pi-5-pcie-metal-case-black.html) for $12.95.
 
 ---
 
@@ -62,7 +62,7 @@ Use the Server image for headless deployments. Set the hostname, enable SSH, and
 
 ## Hardware Assembly
 
-1. Insert the NVMe SSD into the M-Key slot on the Pineboards HatDrive! PoE+ and secure with the M.2 standoff and screw.
+1. Insert the NVMe SSD into the M-Key slot on the Geekworm X1012 and secure with the M.2 standoff and screw.
 2. Connect the 25mm PCIe FPC cable (included) between the HAT's PCIe port and the Pi 5's PCIe FPC connector — lift the latch, insert gold-contacts-down, press the latch closed on both ends.
 3. Seat the HAT's 40-pin GPIO header extension onto the Pi 5. Press firmly and secure the standoffs.
 4. Install the assembly into your Pi 5 case.
@@ -118,7 +118,7 @@ Remove the SD card, label it with the hostname and build date, and store it insi
 
 ## Power: One Cable, No Bricks
 
-The Pineboards HatDrive! PoE+ draws power from an 802.3at PoE+ switch port — up to 25W, which is exactly what the Pi 5 needs at full load. Connect a single Cat6 cable to a PoE+ switch and the node is both powered and networked.
+The Geekworm X1012 draws power from an 802.3at PoE+ switch port — up to 25W, which is exactly what the Pi 5 needs at full load. Connect a single Cat6 cable to a PoE+ switch and the node is both powered and networked.
 
 > **Use PoE+ (802.3at), not standard PoE (802.3af).** The Pi 5 requires 5V/5A (25W). Standard PoE only delivers 15W and will cause instability under load. Confirm your switch ports are PoE+ rated before deployment.
 
@@ -201,7 +201,7 @@ The Pi 5 closes the gap between a hobbyist SBC and a real edge appliance — and
 
 ## Resources
 
-- [Pineboards HatDrive! PoE+ for Raspberry Pi 5](https://pineboards.io/products/hatdrive-poe-for-raspberry-pi-5)
+- [Geekworm X1012 for Raspberry Pi 5](https://pineboards.io/products/hatdrive-poe-for-raspberry-pi-5)
 - [Ubuntu 24.04.2 LTS Download Page](https://ubuntu.com/download/raspberry-pi)
 - [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 - [Pi 5 NVMe Compatibility List (Jeff Geerling)](https://pipci.jeffgeerling.com)
@@ -213,4 +213,4 @@ The Pi 5 closes the gap between a hobbyist SBC and a real edge appliance — and
 
 ---
 
-*Questions about the Pineboards HatDrive or NVMe drive compatibility? Drop a comment below.*
+*Questions about the Geekworm X1012 or NVMe drive compatibility? Drop a comment below.*
