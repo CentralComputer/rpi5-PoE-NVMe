@@ -120,7 +120,7 @@ Remove the SD card, label it with the hostname and build date, and store it insi
 
 The Geekworm X1012 draws power from an 802.3at PoE+ switch port — up to 25W, which is exactly what the Pi 5 needs at full load. Connect a single Cat6 cable to a PoE+ switch and the node is both powered and networked.
 
-> **Use PoE+ (802.3at), not standard PoE (802.3af).** The Pi 5 requires 5V/5A (25W). Standard PoE only delivers 15W and will cause instability under load. Confirm your switch ports are PoE+ rated before deployment.
+> **Use PoE+ (802.3at), not standard PoE (802.3af).** The Pi 5 requires 5V/5A (25W). Standard PoE only delivers 15W and will cause instability under load. Confirm your switch ports are PoE+ rated before deployment. See the official [Raspberry Pi USB Power Delivery white paper](https://pip-assets.raspberrypi.com/categories/685-app-notes-guides-whitepapers/documents/RP-009856-WP-1-USB%20Power%20delivery%20on%20Raspberry%20Pi%205.pdf) for full details.
 
 For bench setup before a PoE switch is available, use a 27W USB-C power supply (Raspberry Pi official or equivalent).
 
