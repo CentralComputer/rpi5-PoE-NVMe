@@ -39,6 +39,7 @@ The Pi 5 is the right choice here for three reasons:
 | Western Digital SN770M 500 GB NVMe M.2 2230 SSD | PCIe Gen4 x4, 5150 MB/s read; primary OS and data drive. [centralcomputer.com](https://www.centralcomputer.com/western-digital-sn770m-500gb-nvme-m-2-2230ssd-m-2-2230-pcie-gen4-x4-5150mb-s-reads-4900mb-s-writes.html) — $129.99 |
 | HDMI-to-CSI-2 Adapter | Captures HDMI video input via camera ribbon slot (optional) |
 | Cat6 Ethernet Cable | Single cable delivers both network and PoE+ power. [centralcomputer.com](https://www.centralcomputer.com/all-products/cables/networking-cables/ethernet-cables/cat6.html) — length per deployment |
+| Ubiquiti USW-Flex-2.5G-8-PoE Switch (optional) | 8-port 802.3at PoE+ switch with 2.5G ports and 10GbE uplink — required if deploying without an existing PoE+ switch. [centralcomputer.com](https://www.centralcomputer.com/ubiquiti-usw-flex-2-5g-8-poe-flexible-2-5g-8-port-poe-switch-with-a-10-gbe-rj45-sfp-combination-uplink-port-that-can-be-powere.html) — $209.99 |
 
 > **One HAT, two jobs.** The Geekworm X1012 replaces two components from a Pi 4 build: the separate PoE HAT and the USB NVMe enclosure. It connects to the Pi 5's PCIe FPC port via the included 25mm flat cable and to the GPIO header for power management. The result is a cleaner, more reliable build with true NVMe performance.
 
